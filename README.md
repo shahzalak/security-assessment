@@ -18,3 +18,5 @@ Docker based security assessment script that performs tests on target host/IP.
 2. Build Docker image from Dockerfile using `docker build --tag sec_assessment .`
 3. Run Docker container using `docker run -it --volume "$(pwd)"/../results:/home sec_assessment:latest`
 4. Run `sec_assessment.sh` inside container
+   * `cd root`
+   * `./sec_assessment.sh`
