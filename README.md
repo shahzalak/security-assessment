@@ -1,5 +1,5 @@
 # security-assessment
-Docker based security assessment script that performs tests on target host/IP.
+Docker based security assessment script that performs various tests (port scan, web server assessment, web technologies detection, directory traversal, SSL security assessment and subdomain enumerations) on target host/IP.
 
 ## Advantages/Motivations behind this project
 * Multiple security/reconnaissance tools in a single script
