@@ -25,9 +25,9 @@ read -p "Do you know the target URL? Enter 'yes' or 'no': " KNOWN_URL
 if [ "$KNOWN_URL" = "yes" ];
 then
 	read -p "Target URL: " URL
-	HOSTNAME=`echo "$URL" | awk -F/ '{print $3}' | awk '{gsub("www.", "");print}'`
+	HOSTNAME=$(echo "$URL" | awk -F/ '{print $3}' | awk '{gsub("www.", "");print}')
         TARGET=$HOSTNAME
-	ROOT_DOMAIN=`echo "$URL" | awk -F/ '{print $3}' | awk -F. '{print $(NF-1)"."$NF}'`
+	ROOT_DOMAIN=$(echo "$URL" | awk -F/ '{print $3}' | awk -F. '{print $(NF-1)"."$NF}')
 	read -p "Do you want to perform subdomain enumeration on $ROOT_DOMAIN? Enter 'yes' or 'no': " CORRECT_ROOT_DOMAIN
         if [ "$CORRECT_ROOT_DOMAIN" = "no" ];
         then
