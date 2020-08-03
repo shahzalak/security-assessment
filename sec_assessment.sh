@@ -16,6 +16,9 @@ then
 	echo "Please run this script as root."
 	exit
 fi
+
+#Set 'umask' to keep newly created files private by default
+umask 077
 #--------------------General notes/checks for script completed--------------------
 
 
