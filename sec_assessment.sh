@@ -29,7 +29,13 @@ if [ "$KNOWN_URL" = "yes" ];
 then
 	read -p "Target URL: " URL
 	HOSTNAME=$(echo "$URL" | awk -F/ '{print $3}' | awk '{gsub("www.", "");print}')
-        TARGET=$HOSTNAME
+        if [[ $HOSTNAME =~ ^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$ ]];
+	then
+		TARGET=$HOSTNAME
+	else
+		echo "Please enter a valid target URL."
+    		exit
+	fi
 	ROOT_DOMAIN=$(echo "$URL" | awk -F/ '{print $3}' | awk -F. '{print $(NF-1)"."$NF}')
 	read -p "Do you want to perform subdomain enumeration on $ROOT_DOMAIN? Enter 'yes' or 'no': " CORRECT_ROOT_DOMAIN
         if [ "$CORRECT_ROOT_DOMAIN" = "no" ];
@@ -39,7 +45,13 @@ then
 else
 	echo "Please note that this script will not be able to perform subdomain enumeration." 
 	read -p "IP address of your target: " IP
-        TARGET=$IP
+        if [[ $IP =~ ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$ ]];
+	then
+		TARGET=$IP
+	else
+		echo "Please enter a valid target IP."
+                exit
+	fi
 fi
 
 #--------------------Nmap--------------------
